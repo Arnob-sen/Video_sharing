@@ -4,10 +4,13 @@ import youtube from './api/youtube'
 
 
 import SearchBar from "./component/SearchBar";
+import { useState } from "react";
 
 
 
 const App = () => {
+  const[videos,setVideos]=useState([]);
+  const [selectedVideo,setSelectedVideo]=useState({id :{},snippet:{}});
  
 
   return (
@@ -29,7 +32,7 @@ const App = () => {
   );
 
   async function handleSubmit(search) {
-    const response = await youtube.get("search", {
+    const {data :{items:videos}} = await youtube.get("search", {
       params: {
         part: "snippet",
         maxResults: 5,
@@ -37,8 +40,10 @@ const App = () => {
         q: search,
       }
     });
+    setVideos(videos);
+    setSelectedVideo(videos[0]);
 
-    console.log(response)
+    
   }
 }
 
