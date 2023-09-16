@@ -5,7 +5,7 @@ import youtube from './api/youtube'
 
 import SearchBar from "./component/SearchBar";
 import { useState } from "react";
-
+import VideoDetail from "./component/VideoDetail";
 
 
 const App = () => {
@@ -21,7 +21,7 @@ const App = () => {
             <SearchBar onSubmit={handleSubmit} />
           </Grid>
           <Grid item xs={8}>
-            {/* <VideoDetail video={selectedVideo} /> */}
+            <VideoDetail video={selectedVideo} />
           </Grid>
           <Grid item xs={4}>
             {/* <VideoList videos={videos} onVideoSelect={setSelectedVideo} /> */}
